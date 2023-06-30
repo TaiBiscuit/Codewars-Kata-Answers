@@ -628,6 +628,80 @@ function solution(string) {
 
 
 
+// Counting Duplicates
+
+//Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+
+function duplicateCount(text){
+  const finalText = text.toLowerCase();
+  let dupliTime = 0;
+  let dupliLetter = [];
+  if(text == '') {
+    return dupliTime
+  } else {
+    for(let i = 0; i < finalText.length; i++) {
+      for(let y = i+1; y < finalText.length; y++) {
+        if(finalText[y] === finalText[i]){
+          if(dupliLetter.includes(finalText[y])) {
+            console.log('Already there!')
+          } else {
+            dupliTime++
+            dupliLetter += finalText[y]
+          }
+        }
+      }
+    }
+  }
+  return dupliTime
+}
+
+
+// OR
+
+function duplicateCount(text){
+  var count = text.toLowerCase().split('').reduce((accum, curr) => {
+    accum[curr] ? accum[curr] += 1 : accum[curr] = 1;
+    return accum;
+  }, {});
+  return Object.keys(count).filter(key => count[key] > 1).length;
+}
+
+
+
+// Replace With Alphabet Position
+
+//Replace every letter with its position in the alphabet. If anything in the text isn't a letter, ignore it and don't return it.
+
+function alphabetPosition(text) {
+  const sentence = text.toLowerCase().split('').map(function(value) {
+    return value.trim();
+  });
+  const ALPHABET = "abcdefghijklmnopqrstuvwxyz".split('');
+  let numberArray = [];
+  for(let i = 0; i < text.length; i++) {
+    if(ALPHABET.includes(sentence[i])) {
+      const index = ALPHABET.indexOf(sentence[i]) + 1;
+      numberArray.push(index);
+    }
+  } 
+  console.log(numberArray.join(' '))
+}
+
+//OR
+
+function alphabetPosition(text) {
+  var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  return text.toLowerCase().split('')
+  .filter( letter => {
+    let index = alphabet.indexOf(letter);
+    return index > -1;
+  }  )
+  .map( letter => alphabet.indexOf(letter) + 1 )
+  .join(' ')
+}
+
+
+
 //
 
 //
