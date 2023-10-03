@@ -304,7 +304,7 @@ function removeSmallest(numbers) {
       const newArray = [...numbers];
       newArray.splice(minIndex, 1)
       return newArray
-  } else if (numbers === []){
+  } else if (numbers == []){
       return []
   }
 
