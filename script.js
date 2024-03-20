@@ -702,9 +702,27 @@ function alphabetPosition(text) {
 
 
 
-//
+//Find the odd int
 
-//
+//Given an array of integers, find the one that appears an odd number of times. There will always be only one integer that appears an odd number of times.
+
+
+
+function findOdd(A){
+  const map = new Map();
+
+  for(let i=0; i<A.length; i++){
+    if(!map[i].has(A[i])){
+      map.set(A[i], 1);
+    } else{
+      map.set(A[i], map.get(A[i]) + 1);
+    }
+
+    for(let [key, value] of map){
+      if(value %2 !== 0) return key
+    }
+  }
+}
 
 
 //
